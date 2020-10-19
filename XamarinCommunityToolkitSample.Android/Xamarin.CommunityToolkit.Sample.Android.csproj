@@ -31,7 +31,7 @@
     <DefineConstants>DEBUG;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AndroidLinkMode>None</AndroidLinkMode>
+    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -91,11 +91,11 @@
     <AndroidResource Include="Resources\drawable\tab_about.png" />
     <AndroidResource Include="Resources\drawable\tab_feed.png" />
     <AndroidResource Include="Resources\drawable\splashscreen_background.xml" />
-    <AndroidResource Include="Resources\drawable-hdpi\ic_splash.png"/>
-    <AndroidResource Include="Resources\drawable-mdpi\ic_splash.png"/>
-    <AndroidResource Include="Resources\drawable-xhdpi\ic_splash.png"/>
-    <AndroidResource Include="Resources\drawable-xxhdpi\ic_splash.png"/>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_splash.png"/>
+    <AndroidResource Include="Resources\drawable-hdpi\ic_splash.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_splash.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_splash.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_splash.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_splash.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\xamarinstore.jpg" />

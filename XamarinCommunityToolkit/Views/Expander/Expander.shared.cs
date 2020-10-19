@@ -63,7 +63,7 @@ namespace Xamarin.CommunityToolkit.UI.Views
 			= BindableProperty.Create(nameof(CollapseAnimationEasing), typeof(Easing), typeof(Expander));
 
 		public static readonly BindableProperty StateProperty
-			= BindableProperty.Create(nameof(State), typeof(ExpandState), typeof(Expander), default(ExpandState), BindingMode.OneWayToSource);
+			= BindableProperty.Create(nameof(State), typeof(ExpandState), typeof(Expander), ExpandState.Collapsed, BindingMode.OneWayToSource);
 
 		public static readonly BindableProperty CommandParameterProperty
 			= BindableProperty.Create(nameof(CommandParameter), typeof(object), typeof(Expander));
@@ -434,7 +434,9 @@ namespace Xamarin.CommunityToolkit.UI.Views
 			}
 
 			if (lastVisibleSize > 0)
-				length = Max((uint)(length * (Abs(endSize - startSize) / lastVisibleSize)), 1);
+				length = (uint)(length * (Abs(endSize - startSize) / lastVisibleSize));
+
+			length = Max(length, 1);
 
 			new Animation(v => ContentSizeRequest = v, startSize, endSize)
 				.Commit(contentHolder, expandAnimationName, 16, length, easing, (value, isInterrupted) =>

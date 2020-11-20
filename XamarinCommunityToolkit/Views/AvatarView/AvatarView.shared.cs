@@ -1,7 +1,4 @@
-﻿using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using static System.Math;
 
 namespace Xamarin.CommunityToolkit.UI.Views
@@ -89,6 +86,7 @@ namespace Xamarin.CommunityToolkit.UI.Views
 			set => SetValue(FontFamilyProperty, value);
 		}
 
+		[TypeConverter(typeof(FontSizeConverter))]
 		public double FontSize
 		{
 			get => (double)GetValue(FontSizeProperty);
@@ -133,6 +131,8 @@ namespace Xamarin.CommunityToolkit.UI.Views
 			control.HasShadow = false;
 			control.Padding = 0;
 			control.Content = MainLayout;
+
+			Image.BindingContextChanged += (s, e) => OnValuePropertyChanged(true);
 		}
 
 		protected override void OnSizeAllocated(double width, double height)
@@ -182,10 +182,12 @@ namespace Xamarin.CommunityToolkit.UI.Views
 			Image.BatchBegin();
 			if (shouldUpdateSource)
 			{
+				if (Image.Source == Source)
+					Image.Source = null;
+
 				Image.IsVisible = await imageSourceValidator.IsImageSourceValidAsync(Source);
 				Image.Source = Source;
 			}
-
 			Image.Aspect = Aspect;
 			Image.BatchCommit();
 
